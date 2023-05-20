@@ -2,6 +2,8 @@
 
 A POC [KeePass](https://keepass.info/) master password dumper using [CVE-2023-32784](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-32784).
 
+![showcase](https://github.com/ynuwenhof/keedump/assets/100025337/a5553312-27a5-4118-84aa-2bf10f5a6ad8)
+
 ## Installation
 
 ### Cargo
