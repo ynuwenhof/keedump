@@ -2,6 +2,11 @@
 name = "keedump"
 version = "0.1.0"
 edition = "2021"
+description = "POC KeePass master password dumper"
+readme = "README.md"
+homepage = "https://github.com/ynuwenhof/keedump"
+repository = "https://github.com/ynuwenhof/keedump"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 color-eyre = "0.6.2"
