@@ -16,11 +16,39 @@ fn main() -> color_eyre::Result<()> {
 
     let mut file = File::open(cli.input)?;
     let mut buf = [0; 1024];
+    let mut recovery_len = 0;
 
     loop {
         let len = file.read(&mut buf)?;
         if len == 0 {
             break;
+        }
+
+        let mut i = 0;
+        while i < len - 1 {
+            let first = buf[i];
+            let second = buf[i + 1];
+
+            if first == 0xCF && second == 0x25 {
+                i += 1;
+                recovery_len += 1;
+            } else if recovery_len != 0 {
+                recovery_len += 1;
+
+                let num = u32::from_le_bytes([first, second, 0, 0]);
+                match char::from_u32(num) {
+                    None => i += 1,
+                    Some(c) => {
+                        if matches!(c, ' '..='~') {
+                            todo!()
+                        }
+
+                        recovery_len = 0;
+                    }
+                }
+            }
+
+            i += 1;
         }
 
         // TODO: Handle chunks
