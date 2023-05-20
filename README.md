@@ -1,6 +1,7 @@
 # Keedump
 
-A POC [KeePass](https://keepass.info/) master password dumper using [CVE-2023-32784](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-32784).
+A POC [KeePass](https://keepass.info/) master password dumper using [CVE-2023-32784](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-32784),
+find further instructions and the original POC [here](https://github.com/vdohney/keepass-password-dumper).
 
 ![showcase](https://github.com/ynuwenhof/keedump/assets/100025337/a5553312-27a5-4118-84aa-2bf10f5a6ad8)
 
