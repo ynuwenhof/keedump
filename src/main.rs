@@ -1,4 +1,6 @@
 use clap::Parser;
+use color_eyre::owo_colors::OwoColorize;
+use itertools::Itertools;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Read;
@@ -57,9 +59,24 @@ fn main() -> color_eyre::Result<()> {
         }
     }
 
-    for val in recovered.values_mut() {
-        val.sort();
-        val.dedup();
+    for chars in recovered.values_mut() {
+        chars.sort();
+        chars.dedup();
+    }
+
+    print!("●");
+
+    for key in recovered.keys().sorted() {
+        let chars = &recovered[key];
+
+        if chars.len() > 1 {
+            let mut s = chars.iter().join(", ");
+            s.truncate(s.len() - 3);
+
+            print!("{{{}}}", s.underline());
+        } else if let Some(c) = chars.first() {
+            print!("{c}");
+        }
     }
 
     Ok(())
