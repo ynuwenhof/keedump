@@ -2,6 +2,34 @@
 
 A POC [KeePass](https://keepass.info/) master password dumper using [CVE-2023-32784](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-32784).
 
+## Installation
+
+### Cargo
+
+Make sure the current stable release of [Rust](https://rust-lang.org/tools/install) is installed.
+
+#### Registry
+
+```bash
+cargo install keedump
+```
+
+#### Manual
+
+```bash
+git clone https://github.com/ynuwenhof/keedump.git
+cd keedump
+cargo install --path .
+```
+
+After installing, you can run the application with:
+
+```bash
+keedump -i path/to/dump
+```
+
+this will print the recovered password into the terminal.
+
 ## License
 
 This project is licensed under either of the following licenses, at your option:
