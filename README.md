@@ -1,5 +1,7 @@
 # Keedump
 
+A POC [KeePass](https://keepass.info/) master password dumper using [CVE-2023-32784](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-32784).
+
 ## License
 
 This project is licensed under either of the following licenses, at your option:
