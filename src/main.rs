@@ -1,4 +1,5 @@
 use clap::Parser;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::Read;
 use std::path::PathBuf;
@@ -17,6 +18,7 @@ fn main() -> color_eyre::Result<()> {
     let mut file = File::open(cli.input)?;
     let mut buf = [0; 1024];
     let mut recovery_len = 0;
+    let mut recovered = HashMap::new();
 
     loop {
         let len = file.read(&mut buf)?;
@@ -40,7 +42,10 @@ fn main() -> color_eyre::Result<()> {
                     None => i += 1,
                     Some(c) => {
                         if matches!(c, ' '..='~') {
-                            todo!()
+                            recovered
+                                .entry(recovery_len)
+                                .and_modify(|v: &mut Vec<char>| v.push(c))
+                                .or_insert(vec![c]);
                         }
 
                         recovery_len = 0;
@@ -50,8 +55,11 @@ fn main() -> color_eyre::Result<()> {
 
             i += 1;
         }
+    }
 
-        // TODO: Handle chunks
+    for val in recovered.values_mut() {
+        val.sort();
+        val.dedup();
     }
 
     Ok(())
